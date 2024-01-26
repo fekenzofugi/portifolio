@@ -34,7 +34,7 @@ const Navbar = () => {
                     strokeDasharray="80"
                     strokeDashoffset="0"
                     >
-                    </line>
+                </line>
             </svg>
             </button>
         </Wrapper>

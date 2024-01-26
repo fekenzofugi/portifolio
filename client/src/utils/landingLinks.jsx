@@ -1,3 +1,9 @@
+import {FaHome, FaNetworkWired} from "react-icons/fa";
+import {} from "react-icons/"
+
+
+
+
 const links = [
     {
         text: "home",
@@ -11,13 +17,13 @@ const links = [
 
     },
     {
-        text: "experience", 
-        path: "experience", 
+        text: "about",
+        path: "about",
         order: 3
     },
     {
-        text: "about",
-        path: "about",
+        text: "experience", 
+        path: "experience", 
         order: 4
     },
     {

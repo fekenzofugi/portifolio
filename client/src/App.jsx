@@ -1,5 +1,7 @@
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
-import { HomeLayout, LandingPage, Blog } from "./pages";
+import { HomeLayout, LandingPage, Blog, BlogPostPage } from "./pages";
+import BlogPost from "./components/BlogComponents/BlogPost";
+import BlogPosts from "./components/BlogComponents/BlogPosts";
 
 const router = createBrowserRouter([
   {
@@ -12,7 +14,17 @@ const router = createBrowserRouter([
       },
       {
         path: "blog",
-        element: <Blog/>
+        element: <Blog/>,
+        children: [
+          {
+            index: true,
+            element: <BlogPosts/>
+          },
+          {
+            path: ":id",
+            element: <BlogPostPage/> 
+          }
+        ]
       }
     ]
   }

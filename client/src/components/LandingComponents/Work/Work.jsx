@@ -3,6 +3,7 @@ import { useInView } from "react-intersection-observer";
 import sfugies from "../../../assets/images/sfugies.png";
 import forAny1 from "../../../assets/images/4any1.png"
 import jobify from "../../../assets/images/jobify.png"
+import restaurant from "../../../assets/images/restaurant.png"
 
 const Work = ({name, description, link}) => {
 
@@ -15,10 +16,15 @@ const {ref: workRef, inView: isWorkVisible } = useInView();
             <h5>{name}</h5>
             <div className="image-div">
                 {name === "Study App" && <a target="_blank" href={link}><img src={sfugies} className="img" alt="" /></a>}
-                {name === "4any1 Acessoria de Corrida" && <a target="_blank" href={link}><img src={forAny1} className="img" alt="" /></a>}
+                {name === "4any1 Assessoria de Corrida" && <a target="_blank" href={link}><img src={forAny1} className="img" alt="" /></a>}
                 {name === "Jobify" && <a target="_blank" href={link}><img src={jobify} className="img" alt="" /></a>}
+                {name === "d'heaven" && <a target="_blank" href={link}><img src={restaurant} className="img" alt="" /></a>}
                 <p className="work-description">{description}</p>
-                <a className="link" target="_blank" href={link}>See Project</a>
+                <div className="buttons">
+                    <a className="link" target="_blank" href={link}>See Project</a>
+                    <a className="link link_sc" target="_blank" href={link}>Source Code</a>                    
+                </div>
+
             </div>
         </div>
     </Wrapper>
@@ -26,7 +32,7 @@ const {ref: workRef, inView: isWorkVisible } = useInView();
 }
 
 const Wrapper = styled.div`
-    background: var(--background-secondary-color);
+    background: var(--background-color);
     box-shadow: var(--shadow-2);
     display: flex;
     align-items: center;
@@ -40,13 +46,15 @@ const Wrapper = styled.div`
     }
     .work-description {
         position: absolute;
-        top: 35%;
+        top: 5rem;
         opacity: 0;
         transition-delay: 0.2s;
         transition: 0.3s ease-in-out;
         color: var(--background-secondary-color);
         display: flex;
         justify-content: center;
+        padding: 0 1rem;
+        text-align: justify;
     }
 
     .image-div {
@@ -67,21 +75,27 @@ const Wrapper = styled.div`
     .image-div:hover .link {
         opacity: 1;
     }
-
     .img {
         border: 2px solid black;
         transition: 0.3s ease-in-out;
+        height: 100%;
     }
     .img:hover {
         opacity: 0;
     }
 
-
+    .buttons {
+        position: absolute;
+        display: flex;
+        width: 100%;
+        gap: 1rem;
+        padding: 0 1rem;
+        bottom: 2rem;
+    }
     .link{
+        width: 60%;
         border: 1px solid var(--background-secondary-color);
         cursor: pointer;
-        position: absolute;
-        top: 70%;
         padding: 5px 10px;
         border-radius: 1rem;
         background-color: var(--text-color);
@@ -90,6 +104,7 @@ const Wrapper = styled.div`
         transition: 0.3s ease-in-out;
         opacity: 0;
         display: flex;
+        justify-content: center;
     }
 
     .link:hover {

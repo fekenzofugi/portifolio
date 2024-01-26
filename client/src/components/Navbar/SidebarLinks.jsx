@@ -60,6 +60,6 @@ const Wrapper = styled.div`
     }
 
     .active {
-        color: var(--primary-500)
+        color: orangered
     }
 `;

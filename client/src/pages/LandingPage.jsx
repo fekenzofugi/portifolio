@@ -4,14 +4,14 @@ import {useInView} from "react-intersection-observer";
 import LandingLinks from "../components/Navbar/LandingLinks";
 import { useState } from "react";
 import { useEffect } from "react";
-import {Link} from "react-router-dom";
+import {BiNavigation} from "react-icons/bi"
+import ModernSidebar from "../components/Navbar/ModernSidebar";
 
 const LandingPage = () => {
 
     const {ref: h1Ref, inView: h1IsVisible} = useInView()
     const {ref: pRef, inView: pIsVisible} = useInView();
-    const {ref: logoRef, inView: logoIsVisible} = useInView();
-    const [showLittleNav, setShowLittleNav] = useState(true);
+    const [showLittleNav, setShowLittleNav] = useState(false);
 
     const toggleLittleNav = () => {
         setShowLittleNav(!showLittleNav);
@@ -37,7 +37,8 @@ const LandingPage = () => {
                 <div id="progress-bar"></div>
             </div>
 
-            <span onClick={toggleLittleNav} className={`${showLittleNav ? " left-container-arrow1 active" : "left-container-arrow1"}`} aria-controls="primary-navigation" aria-expanded={showLittleNav}></span>
+            <ModernSidebar/>
+            <BiNavigation onClick={toggleLittleNav} className={`${showLittleNav ? "nav-btn active" : "nav-btn"}`}/>
             
             <LandingLinks showLittleNav={showLittleNav} onClick={toggleLittleNav}/>
             <div id="home" className="home">
@@ -48,10 +49,10 @@ const LandingPage = () => {
                         across plataforms and devices
                     </p>
                 </div>
+                <svg className="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 319"><path fill="var(--background-color)" fill-opacity="1" d="M0,160L80,144C160,128,320,96,480,122.7C640,149,800,235,960,245.3C1120,256,1280,192,1360,160L1440,128L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>
             </div>
             <WorkSection/>
             <About/>
-            <Experience/>
             <Contact/>
         </Wrapper>
     );
@@ -60,20 +61,34 @@ const LandingPage = () => {
 export default LandingPage;
 
 const Wrapper = styled.div`
+  position: relative;
+  overflow: hidden;
+  .nav-btn {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    font-size: 2.5rem;
+    cursor: pointer;
+    transform: scale(1);
+    z-index: 100;
+    transition: 0.5s;
+  }
 
-  .left-container-arrow1 {
-      position: fixed;
-      height: 0;
-      width: 0;
-      cursor: pointer;
-      top: 15px;
-      z-index: 1;
-      border-top: 15px solid transparent;
-      border-bottom: 15px solid transparent;
-      border-left: 20px solid var(--text-color);
-      transition: all 0.3s;
-      animation: pump 1s ease-in-out forwards infinite;
+  .nav-btn.active {
+    opacity: 0;
+    transform: scale(0);
+  }
 
+
+  .nav-btn:hover {
+    transform: rotate(46deg);
+  }
+
+
+  @media (max-width: 700px) {
+    .left-container-arrow1 {
+      justify-content: start;
+    }
   }
 
   @keyframes pump {
@@ -88,32 +103,19 @@ const Wrapper = styled.div`
     }
   }
 
-  .left-container-arrow1:hover {
-    transform: scale(1.4);
-  }
-
-  .left-container-arrow1.active {
-    rotate: 180deg;
-    padding-left: 1rem;
-    animation: super-pump 0.7s forwards infinite;
-  }
-
   @keyframes super-pump {
     0% {
-      transform: translateX(5px);
-    }
-    50% {
       transform: translateX(0);
     }
     100% {
-      transform: translate(5px);
+      transform: translateX(100%);
     }
   }
 
 
     #progress-bar-container {
         position: fixed;
-        z-index: 1;
+        z-index: 100;
         background-color: white;
         width: 100%;
         top: 0;
@@ -137,9 +139,31 @@ const Wrapper = styled.div`
         align-items: center;
         justify-content: center;
         height: 100vh;
-        top: 0;
-        margin-bottom: 10rem;
+        margin: 0;
+        position: relative;
+        background-color: var(--background-secondary-color); 
+        flex-direction: column
     }
+
+    .wave {
+      display: block;
+      margin: 0;
+      position: absolute;
+      bottom: 0;
+    }
+
+    /* .home::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--primary-500);
+      border-radius: 0 0 40% 40%
+    } */
+
+    .first-page
 
     h1 {
         display: flex;
@@ -195,14 +219,17 @@ const Wrapper = styled.div`
     }
 
     .animate-name {
-      animation: small-to-big 3s forwards;
-      transform: scale(0);
-      transform-origin: center;
+      animation: small-to-big 1s forwards;
+      transform-origin: bottom;
+      opacity: 0;
     }
 
     @keyframes small-to-big {
+      0% {
+
+      }
       100% {
-        transform: scale(1);
+        opacity: 1;
       }
     }
 

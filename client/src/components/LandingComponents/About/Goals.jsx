@@ -6,7 +6,7 @@ const Goals = () => {
             <h4>Professional Goals</h4>
             <ol>
                 <li>  
-                    
+                    work abroad and do what i love
                 </li>
             </ol>
         </Wrapper>
@@ -16,13 +16,14 @@ const Goals = () => {
 const Wrapper = styled.div`
     h4{
         margin-top: 1rem;
-        font-weight: 600;
+        font-weight: 500;
     }
     ol{
         list-style: disc;
     }
     li {
         margin-top: 1rem;
+        font-size: 14px;
     }
 `;
 

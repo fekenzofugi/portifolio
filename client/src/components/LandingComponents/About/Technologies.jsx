@@ -29,13 +29,14 @@ const Technologies = () => {
 const Wrapper = styled.div`
     h4{
         margin-top: 1rem;
-        font-weight: 600;
+        font-weight: 500;
     }
     ol{
         list-style: disc;
     }
     li {
         margin-top: 1rem;
+        font-size: 14px;
     }
 `;
 

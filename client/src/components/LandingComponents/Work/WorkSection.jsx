@@ -34,15 +34,7 @@ const WorkSection = () => {
 
     return(
         <Wrapper id="work">
-                <div className="content">
-                <h1 ref={h1Ref} className={`${myElementIsVisible ? "animate" : "hide"}`}>Work</h1>
-                <p ref={pRef}  className={`${pIsVisible ? "animate" : "hide"}`}>
-                    Take a look at some of my recent projects.
-                </p>
-                {/* <div ref={progressBarRef} id="vertical-progress-bar-container" className={`${progressIsVisible ? "animate" : "hide"}`}>
-                    <div id="vertical-progress-bar"></div>
-                </div> */}
-            </div>
+            <svg className="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 319"><path fill="var(--background-secondary-color)" fill-opacity="1" d="M0,160L80,154.7C160,149,320,139,480,160C640,181,800,235,960,234.7C1120,235,1280,181,1360,154.7L1440,128L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>
             <Works/>
         </Wrapper>    
     );
@@ -51,11 +43,21 @@ const WorkSection = () => {
 export default WorkSection;
 
 const Wrapper = styled.section`
+    padding-bottom: 25%;
+    background-color: var(--background-color);
     overflow: hidden;
-    align-items: center;
     display: flex;
     justify-content: center;
     flex-direction: column;
+    position: relative;
+    align-items: center;
+    
+    .wave {
+        position: absolute;
+        bottom: 0;
+        display: block;
+        margin: 0;
+    }
     .content {
         display: flex;
         flex-direction: column;
@@ -63,7 +65,6 @@ const Wrapper = styled.section`
         align-items: center;
         justify-content: center;
     }
-
 
     p {
         margin-top: 0.2rem;
@@ -80,8 +81,9 @@ const Wrapper = styled.section`
         justify-content: center;
     }
     @media (max-width: 700px) {
+        padding-bottom: 10rem;
         .content {
-            margin: 0;
+            
         }
     }
 `;
