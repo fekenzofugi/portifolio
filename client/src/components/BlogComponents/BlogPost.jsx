@@ -6,13 +6,12 @@ const BlogPost = (props) => {
 
   return (
     <Wrapper>
-      <a href={`/blog/${props.title}`}>
+      <Link to={`/blog/${props.title}`}>
         <div className="content">
-
-          <img className="img" src={ruby} alt="" />
           <header>
             <h4>#{props.count} - {props.title}</h4>
             <p>{props.subHeader}</p>
+            <p>{props.date}</p>
               <div className="tags">
               {props.tags.map(tag => {
                 return <Link key={tag} to={`/blog/{tag}`} className="tag">{tag}</Link>
@@ -22,7 +21,7 @@ const BlogPost = (props) => {
           <div className="body">
           </div>
         </div>
-      </a>
+      </Link>
     </Wrapper>
   )
 }
@@ -42,14 +41,16 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     border: 1px solid black;
-    max-width: 1200px;
+    width: 700px;
+    height: 14rem;
     background-color: var(--background-secondary-color);
     justify-content: center;
     align-items: center;
+    padding: 2rem 0 0;
   }
   header {
-    padding: 1rem 2rem;
-    margin-top: 1rem;
+    width: 100%;
+    padding: 0 1rem 1rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -79,5 +80,10 @@ const Wrapper = styled.div`
     transform: scale(1.04);
   }
   
+  @media (max-width: 800px) {
+    .content {
+      width: 300px;
+    }
+  }
 
 `

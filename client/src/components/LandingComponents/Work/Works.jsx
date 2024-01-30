@@ -44,7 +44,7 @@ const Wrapper = styled.div`
     }
     header.grow::before {
         content: "";
-        background-color: orangered;
+        background-color: 	#F28500;
         height: 2px;
         width: 100%;
         position: absolute;
@@ -57,7 +57,7 @@ const Wrapper = styled.div`
     }
     header.grow::after {
         content: "";
-        background-color: orangered;
+        background-color: #F28500;
         height: 2px;
         width: 100%;
         position: absolute;

@@ -4,6 +4,8 @@ import SmallNavbar from "../components/Navbar/SmallSidebar.";
 import { useContext, createContext, useState, useEffect } from "react";
 import Loading from "../components/UI/Loading";
 import { checkDefaultTheme } from "../App";
+import Language from "../components/UI/Language";
+import Footer from "../components/LandingComponents/Footer";
 
 const uiContext = createContext();
 
@@ -42,7 +44,8 @@ const HomeLayout = () => {
                 <Loading classes={showLoadingAnimation ? "loading-container" : "hide"}/>
                 <SmallNavbar/>
                 <Navbar/>
-                <Outlet/>                
+                <Outlet/>  
+                <Footer/>              
             </main>
 
         </uiContext.Provider>

@@ -3,6 +3,7 @@ import {AiFillGithub} from "react-icons/ai";
 import { useUiContext } from "../../pages/HomeLayout";
 import LandingLinks from "./LandingLinks";
 import DarkThemeBtn from "./DarkThemeBtn";
+import Language from "../UI/Language";
 
 const Navbar = () => {
 
@@ -37,6 +38,7 @@ const Navbar = () => {
                 </line>
             </svg>
             </button>
+
         </Wrapper>
     )
 };
@@ -46,7 +48,6 @@ export default Navbar;
 
 const Wrapper = styled.nav`
     overflow: hidden;
-
     .github-link {
         position: fixed;
         top: 11px;

@@ -16,11 +16,11 @@ const BlogPosts = () => {
 export default BlogPosts;
 
 const Wrapper = styled.div`
-  height: 100vh;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   flex-direction: column-reverse;
-  gap: 3rem;
+  gap: 2rem;
+  margin: 5rem 0;
 
 `;

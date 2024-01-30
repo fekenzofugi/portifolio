@@ -3,6 +3,7 @@ import { useInView } from "react-intersection-observer";
 import {AiOutlineMail, AiOutlineWhatsApp, AiFillLinkedin} from "react-icons/ai"
 import { useState } from "react";
 import {AiFillGithub} from "react-icons/ai";
+import Language from "../UI/Language";
 
 const Contact = () => {
     const {ref: h1Ref, inView: h1IsVisible} = useInView()
@@ -45,6 +46,7 @@ const Contact = () => {
                     </a>
                 </div>
             </div>
+
         </Wrapper>
     )
 };
@@ -92,7 +94,7 @@ const Wrapper = styled.section`
     }
     header.grow::before {
         content: "";
-        background-color: orangered;
+        background-color: #F28500;
         height: 2px;
         width: 100%;
         position: absolute;
@@ -105,7 +107,7 @@ const Wrapper = styled.section`
     }
     header.grow::after {
         content: "";
-        background-color: orangered;
+        background-color: #F28500;
         height: 2px;
         width: 100%;
         position: absolute;
@@ -115,6 +117,10 @@ const Wrapper = styled.section`
         animation: grow-bar 1.1s 0.8s forwards;
         transform-origin: right;
         opacity: 0;
+    }
+
+    .btn {
+        font-family: "Montserrat" ;
     }
 
     @keyframes grow-bar {
