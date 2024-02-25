@@ -276,7 +276,7 @@ const links = [
 
             "<p>Controller instance variables can be accessed by the view. That means we can reference @articles in app/views/articles/index.html.erb. Let's open that file and change it's content.</p>" +
 
-            "<pre><code class='language-html line-numbers'>&lt;h1&gt;Articles&lt;/h1&gt;\n&lt;ul&gt;\n  &lt;% @articles.each do |article| %&gt;\n    &lt;%=article.title %&gt\n  &lt;% end %&gt;\n&lt;ul&gt;</code></pre>" +
+            "<pre><code class='language-html line-numbers'>&lt;h1&gt;Articles&lt;/h1&gt;\n&lt;ul&gt;\n  &lt;% @articles.each do |article| %&gt;\n    &lt;li&gt;\n      &lt;%=article.title %&gt\n    &lt;/li&gt;\n  &lt;% end %&gt;\n&lt;ul&gt;</code></pre>" +
 
             "<p>The above code is a mixture of HTML and ERB. ERB is a templating system taht evaluates Ruby code embedded in a document. Here, we can see two types of ERB tags: &lt;% %&gt; and &lt;%= %&gt;. The first one means 'evaluate the enclosed Ruby code'. The last one means 'evaluate the enclosed Ruby code, and output the value it returns'. Anything you could write in regular Ruby program go inside these ERB tags, though it's usually best to keep the contents of ERB tags short, for readability.  </p>" +
 
@@ -288,9 +288,105 @@ const links = [
 
             "<p>We've connected all the MVC design pattern parts together and we have our first controller action. Next, we'll move to the second action.</p>" +
 
-            "<h4>CRUD</h4>" +
+            "<h4>9. CRUD</h4>" +
 
-            "<p> </p>" +
+            "<p>Almost all web applications involve CRUD (Create, Read, Update, Delete) operations. You may even find that the majority of the work you application does is CRUD. Rails acknowledges this, and provides many features to help simplify code doing CRUD. Let's begin exploring these features by adding more functionality to our application</p>" +
+
+            "<h5>9.1 Showing a Single Article</h5>" +
+
+            "<p>We currently have a view that lists all the articles in our database. Let's create  a view that shows the title and body of a single article.</p>" +
+
+            "<p>We start by adding a new route that maps to a new controller action (which we will add next). Open config/routes.rb, and insert the last route shown here.</p>" +
+            
+            "<pre>Rails.application.routes.draw do\n  root 'artcles#index'\n\n  get '/articles', to: 'articles#index'\n  get '/articles/:id', to: 'articles#show'\nend</pre>" +
+
+            "<p>The new route is another get route, but it has something extra in its path :id. This designates a route parameter. A route parameter captures a segment of the request's path, and puts that value in the params hash, which is accessible by the controller action. For example, when handling a request like GET http://localhost:3000/articles/1, 1 would be captured as the value for :id, which would then be accessible as params[:id] in the show action of ArticlesController.</p>" +
+
+            "<p>Let's add that show action now, below the index action in app/controllers/articles_controller.rb.</p>" +
+
+            "<pre>class ArticlesController < ApplicationController\n  def index\n    @articles = Article.all\n  end\n\n  def show\n    @article = Article.find(params[:id])\n  end\nend</pre>" +
+
+            "<p>The show action calls Article.find with the id captured by the route parameter. The returned article is stored in the @article instance variable, so it is accessible by the view. By default, the show action will render app/views/articles/show.html.erb.</p>" +
+
+            "<p>Let's create app/views/articles/show.html.erb, with the following contents</p>" +
+
+            "<pre>&lt;h1&gt;&lt;%= @article.title %&gt;&lt;/h1&gt;\n\n&lt;p&gt;&lt;%= @article.body %&gt;&lt;/p&gt;</pre>" +
+
+            "<p>Now we can see the article when we visit http://localhost:3000/articles/1.</p>" +
+
+            "<p>To finish up, let's add a convenient way to get to an article's page. We'll link each article's page. We'll link each article's title in app/views/articles/index.html.erb to its page.</p>" +
+
+            "<pre><code class='language-html line-numbers'>&lt;h1&gt;Articles&lt;/h1&gt;\n&lt;ul&gt;\n  &lt;% @articles.each do |article| %&gt;\n    &lt;li&gt;\n      &lt;a href='/articles/ &lt;%= article.id %&gt;'&gt;\n        &lt;%=article.title %&gt\n      &lt/a&gt;\n    &lt;li&gt;\n  &lt;% end %&gt;\n&lt;ul&gt;</code></pre>" +
+
+            "<h5>9.2 Resourceful Routing</h5>" +
+
+            "<p>So far, we've covered the 'R' (Read) of CRUD. We will eventually cover the 'C' (Create), 'U' (Update), and 'D' (Delete). As you might have guessed, we will so do by adding new routes, controller actions and views. Whenever we have such a combination of routes, controller actions, and views that work together to perform CRUD operations on an entity, we call that a entity resource. For example, in our application, we would say an article is a resource.</p>" +
+
+            "<p>Rails provides a routes method named resources that maps all the conventional routes for a collection of resources, such as articles. So before we proceed to the 'C', 'U' and 'D' sections, let's replace the two get routes in config/routes/rb with resources: </p>" +
+
+            "<pre>Rails.application.routes.draw do\n  root 'articles#index'\n  resources :articles\nend</pre>" +
+
+            "<p>We can inspect what routes are mapped by running the bin/rails routes command.</p>" +
+
+            "<p>The resources method also sets up URL and path helper methods that we can use to keep our code from depending on a specific route configuration. The values in the 'prefix' column (in in the table on the command line when we type the bin/rails routes command) plus a suffix of _url or _path forms the names of these helpers. For example, the article_path helper returns /articles/#{article.id} when given an article. We can use it to tidy up our links in app/views/articles/index.html.erb.</p>" +
+
+
+
+            "<pre>&lt;h1&gt;Articles&lt;/h1&gt;\n&lt;ul&gt;\n  &lt;% @articles.each do |article| %&gt;\n    &lt;li&gt;\n      &lt;a href='&lt;%= article_path(article) %&gt;'&gt;\n        &lt;%=article.title %&gt\n      &lt/a&gt;\n    &lt;li&gt;\n  &lt;% end %&gt;\n&lt;ul&gt;</pre>" +
+
+            "<p>However, we will take this one step further by using the link_to helper. The link_to helper renders a link with its first argument as the link's text and its second argument as the link's destination, link_to will call the appropriate path helper to convert the object to a path. For example, if we pass an article, link_to will call article_path. So app/views/articles/index.html.erb becomes: </p>" +
+
+            "<pre><code class='language-html line-numbers'>&lt;h1&gt;Articles&lt;/h1&gt;\n&lt;ul&gt;\n  &lt;li&gt;\n    &lt;% @articles.each do |article| %&gt;\n      &lt;%=article.title %&gt    \n    &lt;% end %&gt;\n  &lt;li&gt;\n&lt;ul&gt;</code></pre>" +
+
+
+            "<h5>9.3 Creating a new article</h5>" +
+
+            "<p>Now we move on to the 'C' (Create) of CRUD. Typically, in web applications, creating a new resource is a multi-step process. First, the user requests a form to fill out. Then, the user submits the form. If there are no errors, then the resource is created and some kind of confiramation is displayed. Else, the form is redisplayed with error messages, and the process is repeated.</p>" +
+
+            "<p>In a Rails application, these steps are conventionally handled by a controller's new and create action. Let's add a typical implementation of these actions to app/controllers/articles_controllers.rb below the show action: </p>" +
+
+            "<pre>class ArticlesController < ApplicationController\n  def index\n    @articles = Article.all\n  end\n\n  def show\n    @article = Article.find(params[:id])\n  end\n\n  def new\n    @article = Article.new\n  end\n\n  def create\n    @article = Article.new(title: '...', body: '...')\n\n    if @article.save\n      redirect_to @article\n    else\n      render :new, status: :unprocessable_entity\n    end\n  end\nend</pre>" +
+
+            "<p>The new action instantiates a new article, but does not save it. This article will be used in the view when building the form. By default, the new action will render app/views/articles/new.html.erb, which we will create next.</p>" +
+
+            "<p>The create action instantiates a new article with values for the title and body, and attempts to save it. If the article is saved successfully, the action redirects the browser to the articles's page at 'http://localhost:3000/articles/#{@article.id}'. Else, the action redisplays the form by rendering app/views/articles/new.html.erb with status code 422 Unprocessable Entity. The title and body here are dummy values. After we create the form, we will come back and change these.</p>" +
+
+            "<p>redirect_to will cause the browser to make a new request, whereas render renders the specified view for the current request. It is important to use redirect_to after mutating the database or application state. Otherwise, if the user refreshes the page, the browser will make the same request, and the mutation will be repeated.</p>" +
+
+            "<h5>9.3.1 Using a Form Builder</h5>" +
+
+            "<p>We will use a feature of Rails called a form builder to create our form. Using a form builder, we can write minimal amount of code to output a form that is fully configured and follows Rails conventions.</p>" +
+
+            "<p>Let's create app/views/articles/new.html.erb with the following contents: </p>" +
+
+            "<pre>&lt;h1&gt;New Article&lt;/h1&gt;\n\n&lt;%= form_with model: @article do |form| %>\n  &lt;div&gt;\n    &lt;%= form.label :title %&gt;&lt;br&gt;\n    &lt;%= form.text_field :title %&gt;\n  &lt;/div&gt;\n\n  &lt;div&gt;\n    &lt;%=form.label :body %&gt;&lt;br&gt;\n    &lt;%= form.text_area :body %&gt;\n  &lt;/div&gt;\n\n  &lt;div&gt;\n    &lt;%= form.submit %&gt;\n  &lt;/div&gt;\n&lt;% end %&gt;</pre>" +
+
+            "<p>The form_with helper method instantiates a form builder. In the form_with block we call methods like label and text_field on the form builder to output the appropriate form elements.</p>" +
+
+            "<p>The returning output from our form_with call will look like: </p>" +
+
+            "<pre>&lt;form action='/articles' accept-charset='UTF-8' method='post'&gt;\n  &lt;input type='hidden' name='authenticity_token' value='...' &gt;\n\n  &lt;div&gt;\n    &lt;label for='article_title'&gt;Title&lt;/label&gt;&lt;br&gt;\n    &lt;input type='text' name='article[title]' id='article_title'&gt;\n  &lt;/div&gt;\n\n  &lt;div&gt;\n    &lt;label for='article_body'&gt;Body&lt;/label&gt;&lt;br&gt;\n    &lt;textarea name='article[body]' id='article_body'&gt;&lt;/textarea&gt;\n  &lt;/div&gt;\n\n  &lt;div&gt;\n    &lt;input type='submit' name='commit' value='Create Article' data-disable-with='Create Article'&gt;\n  &lt;/div&gt;\n&lt;/form&gt;</pre>"+
+
+            "<h5>9.3.2 Using strong parameters</h5>" +
+
+            "<p>Submitted form data is put into the params hash, alongside captured route parameters. Thus, the create action can access the submitted title via params[:article][:title] and the submitted body via params[:article][:body]. We could pass these values individually to Article.new, but that would be verbose and possibly error-prone. And it would become worse as we add more fields.</p>" +
+
+            "<p>Instead, we will pass a single hash that contains the values. However, we must still specify what values are allowed in that Hash. Otherwise, a malicious user could potentially submit extra form fields and overwrite private data. In fact, if we pass the unfiltred params[:article] hash directly to Article.new, Rails will raise a ForbiddenAttributesError to alert us about the problem. So we will use a feature called Strong Parameters to filter params. Think of it as strong typing for params.</p>" +
+        
+            "<p>Let's add a private method to the bottom of app/controllers/articles_controller.rb named article_params that filters params. And let's change create to use it.</p>" +
+
+            "<pre>class ArticlesController < ApplicationController\n  def index\n    @articles = Article.all\n  end\n\n  def show\n    @article = Article.find(params[:id])\n  end\n\n  def new\n    @article = Article.new\n  end\n\n  def create\n    @article = Article.new(article_params)\n\n    if @article.save\n      redirect_to @article\n    else\n      render :new, status: :unprocessable_entity\n    end\n  end\n\n  private\n    def article_params\n      params.require(:article).permit(:title, :body)\n    end\nend</pre>" +
+
+            "<h5>9.3.3 Validations and Displaying Error messages</h5>" +
+
+            "<p>Creating is a multi-step process. Input validation is another step of it. To deal with that Rails provide a feature called validations. Validaitions are rules that are chacked before a model object is saved. If the new object is invalid the creating will be aborted and appropriate error messages will ge added to the errors attribute of the model object.</p>" +
+
+            "<pre>class Article < ApplicationRecord\n  validates :title, presence: true\n  validates :body, presence: true, length: { minimum: 10 }\nend</pre>" +
+
+            "<p>The first validation declares that a title value must be present. Because title is a string, this means that the title value must contain at least one non-whitespace character.</p>" +
+
+            "<p>The second validation declares that the body value must be present. Additionally, it declares that the body value must be at least 10 characteres long.</p>" +
+
 
             "<p></p>",
         img: "https://www.devopsschool.com/blog/wp-content/uploads/2022/03/eb9e3b7dab09358e7cf13f188f64f9f4.png"

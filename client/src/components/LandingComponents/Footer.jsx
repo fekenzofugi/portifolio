@@ -1,12 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 const Footer = () => {
   return (
     <Wrapper>
       <div className="content">
-        <p>&copy;2023-2024 Fernando Fugihara. All Rights Reserved.</p>
+        <p>&copy;2023-2024 Fernando Fugihara.</p>
+        <p>All Rights Reserved.</p>
       </div>
 
     </Wrapper>
@@ -29,6 +29,7 @@ const Wrapper = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
+      margin-bottom: .5rem;
     }
   }
 

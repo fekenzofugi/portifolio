@@ -49,10 +49,6 @@ const Wrapper = styled.div`
     flex-direction: column;
     margin-bottom: 2rem;
   }
-  img {
-    width: 100%;
-    max-width: 500px;
-  }
   .content {
     position: relative;
     max-width: 1000px;
@@ -99,10 +95,18 @@ const Wrapper = styled.div`
         width: 100%;
       }
     }
+
+    h4 {
+      font-size: 2.5rem;
+    }
+    h5 {
+      font-size: 2rem;
+    }
     
     p, h4, h5, pre, ul, ol {
       color: var(--text-color);
       margin-bottom: 1rem;
+      display: block;
     }
   }
 
@@ -134,19 +138,20 @@ a {
       font-size: 2rem;
     }
     h4 {
-      font-size: 1.9rem;
+      font-size: 1.9rem !important;
     }
     h5 {
-      font-size: 1.5rem;
+      font-size: 1.5rem !important;
     }
     .content {
-      width: 300px;
+      width: 17rem;
     }
 
-    pre {
-      display: flex ;
-      flex-wrap: wrap !important;
-      font-size: 12px !important;
+  }
+
+  @media (max-width: 350px) {
+    .content {
+      width: 15rem;
     }
   }
 `

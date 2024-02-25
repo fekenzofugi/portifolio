@@ -15,10 +15,14 @@ const {ref: workRef, inView: isWorkVisible } = useInView();
         <div className="content">
             <h5>{name}</h5>
             <div className="image-div">
-                {name === "Study App" && <a target="_blank" href={link}><img src={sfugies} className="img" alt="" /></a>}
                 {name === "4any1 Assessoria de Corrida" && <a target="_blank" href={link}><img src={forAny1} className="img" alt="" /></a>}
-                {name === "Jobify" && <a target="_blank" href={link}><img src={jobify} className="img" alt="" /></a>}
+                {name === "Study App" && <a target="_blank" href={link}><img src={sfugies} className="img" alt="" /></a>}
                 {name === "d'heaven" && <a target="_blank" href={link}><img src={restaurant} className="img" alt="" /></a>}
+                {name === "Market Mood" && <a target="_blank" href={link}><img src={restaurant} className="img" alt="" /></a>}
+                {name === "Mil Vezes Mãe" && <a target="_blank" href={link}><img src={restaurant} className="img" alt="" /></a>}
+                {name === "Classe do Vinho" && <a target="_blank" href={link}><img src={restaurant} className="img" alt="" /></a>}
+                {name === "Negocia Tudo" && <a target="_blank" href={link}><img src={restaurant} className="img" alt="" /></a>}
+                
                 <p className="work-description">{description}</p>
                 <div className="buttons">
                     <a className="link" target="_blank" href={link}>See Project</a>
