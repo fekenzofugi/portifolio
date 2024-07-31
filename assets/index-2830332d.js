@@ -1729,4 +1729,4 @@ a {
   gap: 2rem;
   margin: 5rem 0;
   min-height: 100vh;
-`,cy=B0([{path:"/",element:g.jsx(E1,{}),children:[{index:!0,element:g.jsx(ny,{})},{path:"blog",element:g.jsx(Xv,{}),children:[{index:!0,element:g.jsx(sy,{})},{path:":id",element:g.jsx(oy,{})}]}]}]),dy=()=>{const e=localStorage.getItem("darkTheme")==="true";return document.body.classList.toggle("dark-theme",e),e},fy=()=>g.jsx(g.Fragment,{children:g.jsx(A0,{router:cy})});ta.createRoot(document.getElementById("root")).render(g.jsx(ft.StrictMode,{children:g.jsx(fy,{})}));
+`,cy=B0([{path:"/portifolio",element:g.jsx(E1,{}),children:[{index:!0,element:g.jsx(ny,{})},{path:"blog",element:g.jsx(Xv,{}),children:[{index:!0,element:g.jsx(sy,{})},{path:":id",element:g.jsx(oy,{})}]}]}]),dy=()=>{const e=localStorage.getItem("darkTheme")==="true";return document.body.classList.toggle("dark-theme",e),e},fy=()=>g.jsx(g.Fragment,{children:g.jsx(A0,{router:cy})});ta.createRoot(document.getElementById("root")).render(g.jsx(ft.StrictMode,{children:g.jsx(fy,{})}));
