@@ -5,7 +5,7 @@ import BlogPosts from "./components/BlogComponents/BlogPosts";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/portifolio",
     element: <HomeLayout/>,
     children:[
       {
