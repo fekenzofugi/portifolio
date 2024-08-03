@@ -38,10 +38,10 @@ const Contact = () => {
                 </div>
                 <div ref={iconsRef} className={`${iconsIsVisible ? "icons animate" : "icons hide"}`}>
                     <AiOutlineMail className="social-media email"/>
-                    <a href="https://github.com/fernandofugihara" target="_blank">
+                    <a href="https://github.com/fekenzofugi" target="_blank">
                         <AiFillGithub className="social-media"/>
                     </a>
-                    <a href="https://www.linkedin.com/in/fernandofugihara/" target="_blank">
+                    <a href="https://www.linkedin.com/in/fernandof/" target="_blank">
                         <AiFillLinkedin className="social-media linkedin"/>
                     </a>
                 </div>

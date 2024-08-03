@@ -8,21 +8,11 @@ const Technologies = () => {
             <hr/>
             <h5>Programming Languages</h5>
             <ol>
-              <li>Java</li>
+              <li>Python</li>
               <li>JavaScript</li>
-            </ol>
-            <h5>Others</h5>
-            <ol>
-              <li>Docker</li>
-              <li>PostgreSQL</li>
-              <li>Nginx</li>
-              <li>Redis</li>
-              <li>Sidekiq</li>
-              <li>AWS</li>
+              <li>Elixir</li>
             </ol>
           <br/>
-          <p>NOTE: I am not an expert in any of these technologies. 
-        I've just listed the ones that i have some experience working with.</p>
        </Wrapper>
     );
 };

@@ -6,16 +6,10 @@ const Interests = () => {
             <h4>Interests</h4>
             <ol>
                 <li>  
-                    Programming
+                    Machine / Deep Learning
                 </li>
                 <li>
-                    Learning new things
-                </li>
-                <li>
-                    Workout
-                </li>
-                <li>
-                    Playing the guitar
+                    Web Development
                 </li>
             </ol>
         </Wrapper>

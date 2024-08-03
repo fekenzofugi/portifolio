@@ -43,7 +43,7 @@ const LandingPage = () => {
             <LandingLinks showLittleNav={showLittleNav} onClick={toggleLittleNav}/>
             <div id="home" className="home">
                 <div className="first-page">
-                    <h1 ref={h1Ref} className={`${h1IsVisible ? "animate-name" : "hide"}`}>Kenzo Fugi</h1>
+                    <h1 ref={h1Ref} className={`${h1IsVisible ? "animate-name" : "hide"}`}>KENMA</h1>
                     <p ref={pRef} className={`${pIsVisible ? "animate-name" : "hide"}`}>
                       A software developer that builds web applications.
                     </p>
@@ -52,6 +52,7 @@ const LandingPage = () => {
             </div>
             <WorkSection/>
             <About/>
+            <Experience/>
             <Contact/>
         </Wrapper>
     );
