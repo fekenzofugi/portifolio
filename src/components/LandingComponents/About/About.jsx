@@ -22,7 +22,6 @@ const About = () => {
                     <div className="about-image">
                         <img src={avatar} className="img" alt="" />
                         <h5>Fernando Fugihara</h5>
-                        {<a className="pdf" href="./curriculo.pdf" download>resumé</a>}
                     </div>
                     <div className="description">
                         <p>
