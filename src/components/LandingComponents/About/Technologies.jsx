@@ -10,7 +10,7 @@ const Technologies = () => {
             <ol>
               <li>Python</li>
               <li>JavaScript</li>
-              <li>Elixir</li>
+              <li>Typescript</li>
             </ol>
           <br/>
        </Wrapper>
