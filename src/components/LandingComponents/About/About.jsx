@@ -25,14 +25,11 @@ const About = () => {
                     </div>
                     <div className="description">
                         <p>
-                            I'm currently studying electrical engineering at the 
-                            <a target="_blank" className="link" href="https://www.unicamp.br/unicamp/"> University of Campinas </a>, and besides that i create websites.
-                            Creating websites is more than a mere activity for me, it's a 
-                            passion that allows me to breathe life into my ideas and share my 
-                            knowledge in a visual and interactive way. 
+                            I'm a undergraduate researcher at 
+                            <a target="_blank" className="link" href="https://www.unicamp.br/unicamp/"> University of Campinas</a>.
                         </p>
                         <p>
-                            In this moment, my interests are Deep Learning and Game development. Stay tune for the projects that will come!
+                            In this moment, my interests are Machine Learning development and Computer Vision. Stay tune for the projects that will come!
                         </p>
                         <hr />
                         <div className="middle-section">

@@ -2,7 +2,7 @@
 const links = [
     {
         name: "4any1 Assessoria de Corrida",
-        description: "A website made with wix plataform to a running team." ,
+        description: "" ,
         link: "https://www.4any1assessoria.com.br/",
         source: ""
     },
@@ -14,7 +14,7 @@ const links = [
     },
     {
         name: "Mil Vezes Mãe",
-        description: "A Spring Boot react app",
+        description: "",
         link: "http://mochilacriativa.com.br",
         source: "https://github.com/fekenzofugi/MilVezesMae"
     },

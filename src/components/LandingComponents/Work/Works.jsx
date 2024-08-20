@@ -12,7 +12,7 @@ const Works = () => {
   return (
     <Wrapper>
         <header ref={barRef} className={`${barIsVisible ? "grow" : "hide"}`}>
-            <h1 ref={h1Ref} className={`${myElementIsVisible ? "animate" : "hide"}`}>Work</h1>       
+            <h1 ref={h1Ref} className={`${myElementIsVisible ? "animate" : "hide"}`}>Web Apps</h1>       
         </header>
                         
         <div className="works">
