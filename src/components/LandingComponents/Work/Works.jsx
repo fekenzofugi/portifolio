@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Work from './Work';
 import links from '../../../utils/worksLinks';
 import { useInView } from 'react-intersection-observer';
+import { Link } from 'react-router-dom';
 
 const Works = () => {
 
@@ -12,7 +13,7 @@ const Works = () => {
   return (
     <Wrapper>
         <header ref={barRef} className={`${barIsVisible ? "grow" : "hide"}`}>
-            <h1 ref={h1Ref} className={`${myElementIsVisible ? "animate" : "hide"}`}>Web Apps</h1>       
+            <h1 ref={h1Ref} className={`${myElementIsVisible ? "animate" : "hide"}`}>Projects</h1>       
         </header>
                         
         <div className="works">
@@ -22,13 +23,22 @@ const Works = () => {
                     <Work className="work" key={name} name={name} description={description} link={link} source={source}/>
                 );
             })}
+
         </div>
+        
+        <Link to="projects" className="btn more">See More</Link>
     </Wrapper>
   )
 }
 
 const Wrapper = styled.div`
     margin: 1rem 3rem 1rem;
+    text-align: center;
+    .more {
+        margin-top: 1rem;
+        color: var(--font-color);
+        background-color: var(--background-secondary-color)
+    }
     header h1 {
         background-color: var(--background-color);
         z-index: 1;

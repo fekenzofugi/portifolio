@@ -23,20 +23,7 @@ const links = [
         description: "",
         link: "https://classedovinho.com.br",
         source: ""
-    },
-    {
-        name: "Negocia Tudo",
-        description: "",
-        link: "https://negociatudo.com.br",
-        source: ""
-    },
-    {
-      name: "Market Mood",
-      description: "",
-      link: "https://marketmood.com.br" 
     }
-    
-
 ]
 
 export default links;

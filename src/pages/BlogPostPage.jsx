@@ -32,10 +32,11 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   padding: 4rem 3rem 2rem;
+  min-height: 100vh;
   h2 {
     font-weight: 800;
     font-size: 3rem;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
   }
   pre {
     display: flex;
@@ -71,6 +72,8 @@ const Wrapper = styled.div`
       text-transform: none;
       word-wrap: break-word;
       overflow-x: auto;
+      line-height: 1.8rem;
+      margin: 2rem 0;
     }
     
     b {
@@ -97,9 +100,11 @@ const Wrapper = styled.div`
 
     h4 {
       font-size: 2.5rem;
+      margin: 2rem 0;
     }
     h5 {
       font-size: 2rem;
+      margin: 2rem 0;
     }
     
     p, h4, h5, pre, ul, ol {

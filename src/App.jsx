@@ -2,6 +2,9 @@ import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import { HomeLayout, LandingPage, Blog, BlogPostPage } from "./pages";
 import BlogPost from "./components/BlogComponents/BlogPost";
 import BlogPosts from "./components/BlogComponents/BlogPosts";
+import Projects from "./pages/Projects";
+import Project from "./components/ProjectsComponents/Project";
+import ProjectPosts from "./components/ProjectsComponents/ProjectPosts";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +26,16 @@ const router = createBrowserRouter([
           {
             path: ":id",
             element: <BlogPostPage/> 
+          }
+        ]
+      },
+      {
+        path: "projects",
+        element: <Projects/>,
+        children: [
+          {
+            index: true,
+            element: <ProjectPosts/>
           }
         ]
       }
