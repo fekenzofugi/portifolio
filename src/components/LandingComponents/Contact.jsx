@@ -41,7 +41,7 @@ const Contact = () => {
                     <a href="https://github.com/fekenzofugi" target="_blank">
                         <AiFillGithub className="social-media"/>
                     </a>
-                    <a href="https://www.linkedin.com/in/fernandof/" target="_blank">
+                    <a href="https://www.linkedin.com/in/fernando-fugihara-116490322/" target="_blank">
                         <AiFillLinkedin className="social-media linkedin"/>
                     </a>
                 </div>
