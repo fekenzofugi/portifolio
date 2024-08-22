@@ -1,39 +1,40 @@
 import styled from "styled-components";
-import ruby from "../../assets/images/ruby.png"
 import { Link } from "react-router-dom";
 
-const BlogPost = (props) => {
+const Project = (props) => {
 
   return (
     <Wrapper>
-      <Link to={`${props.title}`}>
         <div className="content">
-          <header>
+            <header>
             <h4>#{props.count} - {props.title}</h4>
             <p>{props.subHeader}</p>
-            <p>{props.date}</p>
-              <div className="tags">
-              {props.tags.map(tag => {
+                <div className="tags">
+                {props.tags.map(tag => {
                 return <Link key={tag} to={`/blog/{tag}`} className="tag">{tag}</Link>
-              })}
+                })}
             </div>
-          </header>
-          <div className="body">
-          </div>
+            </header>
+            <div className="body">
+            </div>
+            <a target="_blank" href={props.date}>source code</a>
         </div>
-      </Link>
     </Wrapper>
   )
 }
 
-export default BlogPost;
+export default Project;
 
 const Wrapper = styled.div`
   a {
     transition: 0.3s;
-    color: var(--font-color)
+    color: var(--font-color);
+    border-color: var(--font-color);
+    border: 1px solid;
+    padding: 5px 5px;
   }
-  a:hover .content {
+
+  a:hover{
     background-color: rgba(0, 0, 0, 0.2) !important;
   }
   .content {

@@ -1,19 +1,19 @@
 import React from 'react'
 import styled from 'styled-components';
-import BlogPost from './BlogPost';
-import links from '../../utils/postsLinks';
+import links from '../../utils/projectLinks';
+import Project from './Project';
 
-const BlogPosts = () => {
+const ProjectPosts = () => {
   return (
     <Wrapper>
         {links.map(post => {
-          return <BlogPost key={post} count = {post.count} title ={post.title} subHeader = {post.subHeader} tags = {post.tags} date = {post.date} img = {post.img}/>
+          return <Project key={post} count = {post.count} title ={post.title} subHeader = {post.subHeader} tags = {post.tags} date = {post.github} img = {post.img}/>
         })}
     </Wrapper>
   )
 }
 
-export default BlogPosts;
+export default ProjectPosts;
 
 const Wrapper = styled.div`
   display: flex;
